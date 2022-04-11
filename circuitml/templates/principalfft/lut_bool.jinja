@@ -1,0 +1,5 @@
+const bool {{ op }}LUT[{{ size }}][{{ fft.original_size }}] = {
+    {% for i in range(0, size) %}
+        { {% for n in range(0, fft.original_size) %} {{ "true" if math[op](2 * PI / fft.original_size * fft.idx[i] * n) > 0 else "false" }}, {% endfor %} },
+    {% endfor %}
+};

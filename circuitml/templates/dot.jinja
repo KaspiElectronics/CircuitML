@@ -1,0 +1,24 @@
+{% if platform == 'attiny' %}
+    {% set signature = 'float w[%d]' % dimension  %}
+    {% set wi = 'w[i]' %}
+    {% set preamble = '' %}
+{% else %}
+    {% set signature = '...' %}
+    {% set wi = 'va_arg(w, double)' %}
+    {% set preamble = 'va_list w;\nva_start(w, %d);' % dimension %}
+{% endif %}
+
+/**
+ * Compute dot product
+ */
+float dot(float *x, {{ signature }}) {
+    {{ preamble }}
+    float dot = 0.0;
+
+    for (uint16_t i = 0; i < {{ dimension }}; i++) {
+        const float wi = {{ wi }};
+        dot += {{ expr }};
+    }
+
+    return dot;
+}

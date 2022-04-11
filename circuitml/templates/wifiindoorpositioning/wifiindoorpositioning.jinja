@@ -1,0 +1,44 @@
+#pragma once
+
+namespace Eloquent {
+    namespace Projects {
+        class WifiIndoorPositioning {
+            public:
+                float features[{{ X[0]|length }}] = {0};
+
+                /**
+                 * Get feature vector
+                 */
+                float* scan() {
+                    uint8_t numNetworks = WiFi.scanNetworks();
+
+                    for (uint8_t i = 0; i < {{ X[0]|length }}; i++) {
+                        features[i] = 0;
+                    }
+
+                    for (uint8_t i = 0; i < numNetworks; i++) {
+                        int featureIdx = ssidToFeatureIdx(WiFi.SSID(i));
+
+                        if (featureIdx >= 0) {
+                            features[featureIdx] = WiFi.RSSI(i);
+                        }
+                    }
+
+                    return features;
+                }
+
+            protected:
+                /**
+                 * Convert SSID to featureIdx
+                 */
+                int ssidToFeatureIdx(String ssid) {
+                    {% for network, idx in networkmap.items() %}
+                    if (ssid.equals("{{ network }}"))
+                        return {{ idx }};
+                    {% endfor %}
+
+                    return -1;
+                }
+        };
+    }
+}
