@@ -16,7 +16,7 @@ CircuitML can be used to convert the following machine learning models:
 - Relevant Vector Machines (from `skbayes.rvm_ard_models` package)
 - Random Forest
 - GaussianNB
-- SEFT
+- SEFR
 - PCA
 
 
