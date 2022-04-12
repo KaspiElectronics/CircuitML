@@ -1,0 +1,14 @@
+{% extends '_skeleton.jinja' %}
+
+{% block predict %}
+    float votes[{{ n_classes }}] = { 0.0f };
+
+    {% for k, tree in f.enumerate(trees) %}
+        {% with i = 0, class_idx = k % n_classes %}
+            // tree #{{ k + 1 }}
+            {% include 'xgboost/tree.jinja' %}
+        {% endwith %}
+    {% endfor %}
+
+    {% include 'vote.jinja' %}
+{% endblock %}

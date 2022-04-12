@@ -1,0 +1,3 @@
+{% for i, w in f.enumerate(weights) %}
+    votes[{{ i }}] += dot(x, {% for j, wj in f.enumerate(w) %} {% if j > 0 %},{% endif %} {{ f.round(wj) }} {% endfor %});
+{% endfor %}

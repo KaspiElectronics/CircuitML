@@ -1,0 +1,18 @@
+{% extends '_skeleton.jinja' %}
+
+{% block predict %}
+    float votes[{{ arrays.vectors|length }}] = { 0 };
+    {% for i, (rv, cf, act, b) in f.enumerate(f.zip(arrays.vectors, arrays.coefs, arrays.actives, arrays.intercepts)) %}
+        {% if rv.shape[0] == 0 %}
+            votes[{{ i }}] = {{ b }};
+        {% else %}
+            votes[{{ i }}] = (compute_kernel(x, {% for vi in rv[0] %}{% if loop.index > 1 %},{% endif %} {{ f.round(vi) }}{% endfor %}) - {{ f.round(arrays.mean[act][0]) }} ) * {{ f.round(cf[act][0] / arrays.std[act][0]) }} + {{ f.round(b) }};
+        {% endif %}
+    {% endfor %}
+
+    {% include 'vote.jinja' %}
+{% endblock %}
+
+{% block protected %}
+    {% include 'svm/kernel/%s.jinja' % platform %}
+{% endblock %}
