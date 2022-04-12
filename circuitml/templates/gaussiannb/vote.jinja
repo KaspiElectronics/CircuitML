@@ -1,8 +1,0 @@
-float theta[{{ theta[0]|length }}] = { 0 };
-float sigma[{{ sigma[0]|length }}] = { 0 };
-
-{% for i, (t, s) in f.enumerate(f.zip(theta, sigma)) %}
-    {% for j, tj in f.enumerate(t) %}theta[{{ j }}] = {{ f.round(tj) }}; {% endfor %}
-    {% for j, sj in f.enumerate(s) %}sigma[{{ j }}] = {{ f.round(sj) }}; {% endfor %}
-    votes[{{ i }}] = {{ f.round(prior[i]) }} - gauss(x, theta, sigma);
-{% endfor %}

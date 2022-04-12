@@ -1,6 +1,0 @@
-float w[{{ weights[0]|length }}] = { 0 };
-
-{% for i, w in f.enumerate(weights) %}
-    {% for j, wj in f.enumerate(w) %}w[{{ j }}] = {{ f.round(wj) }}; {% endfor %}
-    votes[{{ i }}] += dot(x, w);
-{% endfor %}
