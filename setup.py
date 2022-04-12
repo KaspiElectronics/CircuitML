@@ -4,13 +4,12 @@ from distutils.core import setup
 setup(
   name = 'circuitml',
   packages = ['circuitml'],
-  version = '1.1.27',
+  version = '1.0',
   license='MIT',
-  description = 'Generate C code for microcontrollers from Python\'s sklearn classifiers',
-  author = 'Simone Salerno',
+  description = ' Generate C code for microcontrollers from Python's machine learning models',
+  author = 'KaspiElectronics',
   author_email = 'kaspielectronics@pm.me',
   url = 'https://github.com/KaspiElectronics/CircuitML/',
-  download_url = 'https://github.com/KaspiElectronics/CircuitML//blob/master/dist/micromlgen-1.1.27.tar.gz?raw=true',
   keywords = [
     'ML',
     'microcontrollers',
