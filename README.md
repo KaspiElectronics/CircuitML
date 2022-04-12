@@ -62,11 +62,10 @@ from sklearn.decomposition import PCA
 from sklearn.datasets import load_iris
 from circuitml import port
 
-if __name__ == '__main__':
-    X = load_iris().data
-    pca = PCA(n_components=2, whiten=False).fit(X)
+X = load_iris().data
+pca = PCA(n_components=2, whiten=False).fit(X)
     
-    print(port(pca))
+print(port(pca))
 ```
 
 ### [SEFR](https://arxiv.org/abs/2006.04620)
@@ -78,7 +77,6 @@ pip install sefr
 ```python
 from sefr import SEFR
 from circuitml import port
-
 
 clf = SEFR()
 clf.fit(X, y)
@@ -112,7 +110,7 @@ with open('RandomForestClassifier.h', 'w') as file:
 // Arduino sketch
 #include "RandomForestRegressor.h"
 
-CML::ML::Port::RandomForestRegressor regressor;
+Eloquent::ML::Port::RandomForestRegressor regressor;
 float X[] = {...};
 
 void setup() {
