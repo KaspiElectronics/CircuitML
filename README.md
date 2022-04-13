@@ -110,7 +110,7 @@ with open('RandomForestClassifier.h', 'w') as file:
 // Arduino sketch
 #include "RandomForestRegressor.h"
 
-Eloquent::ML::Port::RandomForestRegressor regressor;
+ML::Port::RandomForestRegressor regressor;
 float X[] = {...};
 
 void setup() {

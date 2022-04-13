@@ -1,27 +1,25 @@
 #pragma once
 #include <cstdarg>
 
-namespace Eloquent {
-    namespace ML {
-        namespace Port {
-            class {{ classname }} {
-                public:
+namespace ML {
+    namespace Port {
+        class {{ classname }} {
+            public:
 
-                    /**
-                     * Predict class for features vector
-                     */
-                    {{ dtype|default("int", true) }} predict(float *x) {
-                        {% block predict %}{% endblock %}
-                    }
+                /**
+                * Predict class for features vector
+                */
+                {{ dtype|default("int", true) }} predict(float *x) {
+                    {% block predict %}{% endblock %}
+                }
 
-                    {% include 'classmap.jinja' %}
+                {% include 'classmap.jinja' %}
 
-                    {% block public %}{% endblock %}
+                {% block public %}{% endblock %}
 
-                protected:
+            protected:
 
-                    {% block protected %}{% endblock %}
-            };
-        }
+                {% block protected %}{% endblock %}
+        };
     }
 }
