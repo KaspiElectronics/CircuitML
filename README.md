@@ -1,8 +1,6 @@
 # CircuitML
 **CircuitML** is a **machine learning** library that allows you to convert machine learning models to micro-controllers and other embedded devices.
 
-CircuitML is a fork of [micromlgen](https://github.com/CMLarduino/micromlgen).
-
 ## Install
 ```
 pip install circuitml
