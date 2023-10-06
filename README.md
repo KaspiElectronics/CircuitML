@@ -103,7 +103,7 @@ with open('RandomForestClassifier.h', 'w') as file:
     file.write(port(clf))
 ```
 
-### Use exported model in C
+### Use exported model in C++
 ```cpp
 // Arduino sketch
 #include "RandomForestRegressor.h"
